@@ -3,12 +3,30 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+  <header>
+    <h1>Welcome to the Blog!</h1>
+    <hr />
+  
+    <form class="new-post">
+      <input id="title" type="text" name="title" placeholder="Add a post title" />
+      <div class="scroll-container">
+        <textarea wrap="hard" id="body" type="text" name="body" placeholder="Add some body text"></textarea>
+      </div>
+      <button id="submit" type="submit">Submit</button>
+    </form>
+  </header>
+  
+  <div class="post-container">
+    {{#each posts}}
+      {{> post}}
+    {{/each}}
+  </div>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="post">
+  <div class="post">
+    <span>{{title}}</span>
+    <span>{{date}}</span>
+    <p>{{body}}</p>
+  </div>
 </template>
