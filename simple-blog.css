@@ -1,7 +1,70 @@
-/* CSS declarations go here */
+/* font declarations */
+@font-face {
+    font-family: 'misoregular';
+    src: url('misoregular/miso-regular-webfont.eot');
+    src: url('misoregular/miso-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('misoregular/miso-regular-webfont.woff2') format('woff2'),
+         url('misoregular/miso-regular-webfont.woff') format('woff'),
+         url('misoregular/miso-regular-webfont.ttf') format('truetype'),
+         url('misoregular/miso-regular-webfont.svg#misoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+  font-family: 'gentium';
+  src: url('GentiumPlus-R.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+	font-family: 'sansastion';
+	src: url('sansation/sansation_light.tff') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'cinzel';
+	src: url('cinzel/cinzel-regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+  font-family: 'StMarie-Thin';
+  src: url('st-marie/StMarie-Thin.eot');
+  src: url('st-marie/StMarie-Thin.eot?#iefix') format('embedded-opentype'),
+       url('st-marie/StMarie-Thin.woff2') format('woff2'),
+       url('st-marie/StMarie-Thin.woff') format('woff'),
+       url('st-marie/StMarie-Thin.ttf') format('truetype'),
+       url('st-marie/StMarie-Thin.svg#StMarie-Thin') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*body and dynamic classes */
+body { 
+	background: linear-gradient(5deg,#333, #222);
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: #ddd;
+}
+#bodyContainer {
+	max-width: 1000px;
+	min-width: 460px;
+	margin-top: 40px;
+	margin-right:auto;
+	margin-left:auto;
+	width: 65%;
+}
+.hidden {
+	-webkit-transition: height 1s;
+	-moz-transition: height 1s;
+	transition: height 1s;
+}
+/* headers */
 header h1 {
-	font-family: sans-serif;
-	font-size: xx-large;
+	font-size: 60px;
+	font-family: sansation;
+	font-weight:lighter;
 	margin-left: 3%;
 	margin-top: 50px;
 }
@@ -9,43 +72,120 @@ header hr {
 	width: 70%;
 	margin-left: 3%;
 }
-.new-post {
-	margin: 2% 0 8% 5%;
-	background: #ddd;
-	box-shadow: 0 2px 5px #ccc;
-	border-radius: 1px;
-	padding: 6px;
-	width: 60%;
+
+/* new post submission box styling */
+.newPost {
+	margin-left:auto;
+	margin-right:auto;
+	width: 50%;
 	overflow:hidden; /* this is to keep submit button floated inside */
+	transition: margin-top 0.75s ease-in-out;
 }
-.new-post input, textarea {
+.newPost input, textarea {
 	border: none;
 	border-bottom: 1px solid #aaa;
 	border-left: 1px solid #aaa;
-	padding-left: 5px;
-	background: #ddd;
+	margin: 6px;
+	padding: 6px;
+	background: none;
+	color: #aaa;
 	font-family: sans-serif;
 	font-size: 1em;
 	min-height: 1.3em;
 }
-.new-post #title {
-	margin: 3px;
-	margin-top: 5px;
+.newPost #newTitle {
 	width: 280px;
 }
-.new-post #body {
+.newPost #newBody {
 	width: 100%;
 	height: 6em;
 	padding-right: 20px;
 	overflow:auto;
 }
-.new-post #submit {
+.newPost #newSubmit {
 	float:right;
-	margin: 4px;
+	margin: 8px 0 16px 0;
+	color: #aaa;
+	background:none;
+	border: 1px solid #aaa;
+	padding: 4px 9px 4px 9px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.scroll-container {
+.newPost #newSubmit:hover {
+	color: #eee;
+	border: 1px solid #eee;
+}
+.newPost #newSubmit:active {
+	background: #ddd;
+}
+.dropdown {
 	overflow:hidden;
-	width:450px;
-	height:100%;
-	margin: 10px 0 5px 3px;
+}
+.dropdownToggle {
+	appearance:none;
+	position:absolute;
+	left:-100%;
+	top:-100%;
+}
+.dropdownToggleLabel {
+	cursor:pointer;
+	width: 99%;
+	text-align: center;
+	color: #aaa;
+	padding: 2px;
+	padding-bottom:4px;
+	border: 1px solid #aaa;
+	display:block;
+}
+.dropdownToggleLabel:hover {
+	color: #eee;
+	border:1px solid #eee;
+}
+.dropdownToggle:checked ~ .newPost {
+	margin-top: -210px;
+}
+/* post styling */
+.post {
+	position: relative;
+	margin-bottom: 150px;
+	margin-top: 10px;
+	padding:5px 5px 0 5px;
+}
+.post h2 { /* title */
+	font-family: miso, monospace;
+	font-size: 40px;
+	margin-bottom:0;
+}
+.post h4 { /* date */
+	font-family: Courier New, Courier, monospace;
+	font-size:16px;
+	font-style: italic;
+	padding-left: 30px;
+	margin: 0 0 20px 0;
+	color: #6ac;
+}
+.post p { /*post body*/
+	font-family: monospace;
+	font-size: 20px;
+	color: #ccc;
+	padding: 20px;
+	line-height: 1.6em;
+}
+.post hr {
+	width:200px;
+	color: #eee;
+	margin-left: auto;
+	margin-right: auto;
+}
+.post .deletePost {
+	color: #aaa;
+	font-size: 14px;
+	position: absolute;
+	top: 2px;
+	right: 0px;	
+	background: none;
+	border: none;
+}
+.post .deletePost:hover {
+	color: #eee;
 }

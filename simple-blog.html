@@ -5,28 +5,34 @@
 <body>
   <header>
     <h1>Welcome to the Blog!</h1>
-    <hr />
-  
-    <form class="new-post">
-      <input id="title" type="text" name="title" placeholder="Add a post title" />
-      <div class="scroll-container">
-        <textarea wrap="hard" id="body" type="text" name="body" placeholder="Add some body text"></textarea>
-      </div>
-      <button id="submit" type="submit">Submit</button>
-    </form>
+    <!--<hr /> -->
   </header>
-  
-  <div class="post-container">
-    {{#each posts}}
-      {{> post}}
-    {{/each}}
+  <div id="bodyContainer">
+    <div class="dropdown">
+      <input type="checkbox" name="dropdownToggle" class="dropdownToggle" checked="{{checked}}">
+      <form class="newPost">
+          <input id="newTitle" type="text" name="title" placeholder="Add a post title" />
+          <div class="inputScrollContainer">
+            <textarea wrap="hard" id="newBody" type="text" name="body" placeholder="Add some body text"></textarea>
+          </div>
+          <button id="newSubmit" type="submit">Submit</button>
+      </form>
+      <label class="dropdownToggleLabel" for="dropdownToggle">{{#if checked}}&or;{{else}}&and;{{/if}}</label>
+    </div>
+    <div class="postContainer">
+      {{#each posts}}
+        {{> post}}
+      {{/each}}
+    </div>
   </div>
 </body>
 
 <template name="post">
   <div class="post">
-    <span>{{title}}</span>
-    <span>{{date}}</span>
+    <button class="deletePost">&times;</button>
+    <h2 class="postTitle">{{title}}</h2>
+    <h4 class="postDate">{{simpleDate date}}</h4>
     <p>{{body}}</p>
+    <hr />
   </div>
 </template>
